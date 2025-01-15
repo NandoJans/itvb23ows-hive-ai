@@ -44,7 +44,10 @@ def ai_move():
     depth = 3
     inf = 2 ** 64
 
-    move = vidstige.hive.minmax(state, state.player(), depth, -inf, inf)[0]
+    try:
+        move = vidstige.hive.minmax(state, state.player(), depth, -inf, inf)[0]
+    except:
+        move = None
     if move is None or move[0] == 'nothing':
         return jsonify('pass', None, None)
     elif move[0] == 'place':
